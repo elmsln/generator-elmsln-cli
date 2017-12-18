@@ -1,0 +1,7 @@
+{
+  "name": "<%= name %>",
+  "short_name": "<%= name %>",
+  "description": "<%= description %>",
+  "start_url": "/",
+  "display": "standalone"
+}
