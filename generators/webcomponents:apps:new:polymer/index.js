@@ -7,12 +7,12 @@ module.exports = class extends ElmsGenerator {
       {
         type: 'input',
         name: 'name',
-        message: 'What is the name of your app?',
+        message: 'What is the name of your app?'
       },
       {
         type: 'input',
         name: 'description',
-        message: 'What is the description of your app?',
+        message: 'What is the description of your app?'
       }
     ];
 
@@ -29,7 +29,7 @@ module.exports = class extends ElmsGenerator {
     const name = this.answers.name;
     const nameSnakeFormat = this.answers.nameSnakeFormat;
     const destinationPath = this.destinationPath(`${this.APPS_PATH()}/${name}`);
-    // copy over all files but the dynamic ones
+    // Copy over all files but the dynamic ones
     this.fs.copyTpl(
       `${this.templatePath('_name')}/**/!(_)*`,
       destinationPath,

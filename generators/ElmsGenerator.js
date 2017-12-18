@@ -46,7 +46,7 @@ module.exports = class extends Generator {
     });
   }
 
-  // empty an array of files
+  // Empty an array of files
   emptyFiles(files) {
     var cleanFiles = files.map(file => this.fs.write(file, ' '));
     return cleanFiles;

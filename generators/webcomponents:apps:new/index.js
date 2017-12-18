@@ -2,20 +2,17 @@
 const ElmsGenerator = require('../ElmsGenerator');
 
 module.exports = class extends ElmsGenerator {
-
   prompting() {
     return this.prompt([
       {
         type: 'list',
         name: 'type',
         message: 'What type of app would you like to create?',
-        choices: [
-          'Polymer'
-        ]
+        choices: ['Polymer']
       }
-    ]).then((answers) => {
-      this.answers = answers
-    })
+    ]).then(answers => {
+      this.answers = answers;
+    });
   }
 
   writing() {

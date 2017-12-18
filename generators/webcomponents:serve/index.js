@@ -16,9 +16,8 @@ module.exports = class extends ElmsGenerator {
     }
   }
 
-  prompting() {
-  }
-  
+  prompting() {}
+
   installing() {
     /**
      * @todo run a command like the following to spawn new docker containers.
@@ -26,7 +25,7 @@ module.exports = class extends ElmsGenerator {
      */
     const path = this.env.path;
     const command = `docker-compose run --rm -w ${path} --entrypoint="polymer serve -H 0.0.0.0" -p 8081:8081 devmachine`;
-    this.log(`$un this command on your host machine, outside of DevMachine:`)
-    this.log(`${command}`)
+    this.log(`$un this command on your host machine, outside of DevMachine:`);
+    this.log(`${command}`);
   }
 };

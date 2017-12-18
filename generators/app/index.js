@@ -5,16 +5,12 @@ module.exports = class extends ElmsGenerator {
   prompting() {
     return this.prompt([
       {
-        type    : 'list',
-        name    : 'operation',
-        message : 'What operation would you like to perform?',
-        choices: [
-          'Apps',
-          'List Shared Elements',
-          'Clean Dependecies'
-        ]
+        type: 'list',
+        name: 'operation',
+        message: 'What operation would you like to perform?',
+        choices: ['Apps', 'List Shared Elements', 'Clean Dependecies']
       }
-    ]).then((answers) => {
+    ]).then(answers => {
       this.answers = answers;
     });
   }
