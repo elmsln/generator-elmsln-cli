@@ -8,7 +8,7 @@ module.exports = class extends ElmsGenerator {
         type: 'list',
         name: 'operation',
         message: 'What opperation would you like to perform?',
-        choices: ['Create new app', 'List Apps', 'Serve App']
+        choices: ['Create new app', 'List Apps', 'Serve App', 'Vagrant Push App']
       }
     ]).then(answers => {
       this.answers = answers;
@@ -24,6 +24,10 @@ module.exports = class extends ElmsGenerator {
     }
     if (this.answers.operation === 'Serve App') {
       this.env.operation = 'serve';
+      this.composeWith(require.resolve('../webcomponents:apps:list'));
+    }
+    if (this.answers.operation === 'Vagrant Push App') {
+      this.env.operation = 'vagrant_push';
       this.composeWith(require.resolve('../webcomponents:apps:list'));
     }
   }

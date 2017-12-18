@@ -9,13 +9,13 @@ module.exports = class extends ElmsGenerator {
         apps.map(app => {
           const appsPathlist = this.__appsPathlist || {};
           const path = app;
-          const shortname = app.slice(40);
+          const name = app.split('/').pop();
           const appPathItem = {};
-          appPathItem[shortname] = path;
+          appPathItem[name] = path;
           // Store the original path for later
           this.__appsPathlist = Object.assign(appsPathlist, appPathItem);
           // Trim the path to only show the app name
-          return app.slice(40);
+          return name;
         })
       )
       .then(apps => {
@@ -34,9 +34,19 @@ module.exports = class extends ElmsGenerator {
   }
 
   writing() {
+    // set the path variable by getting the full path and chopping
+    // off the destinationPath() so we have a relative version of the
+    // path from the elmsln root directory.
+    this.env.path = (this.__appsPathlist[this.answers.app]).replace(`${this.destinationPath()}/`, '');
+    // send along the name variable
+    this.env.name = this.answers.app;
+
+    // the operation was set in webcomponents:apps
     if (this.env.operation === 'serve') {
-      this.env.path = this.__appsPathlist[this.answers.app];
       this.composeWith(require.resolve('../webcomponents:serve'));
+    }
+    if (this.env.operation === 'vagrant_push') {
+      this.composeWith(require.resolve('../vagrant:push'));
     }
   }
 };
