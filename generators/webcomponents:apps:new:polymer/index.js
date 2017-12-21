@@ -48,7 +48,7 @@ module.exports = class extends ElmsGenerator {
     );
     this.fs.copyTpl(
       this.templatePath('_name/_nameSnakeFormat.php'),
-      `${destinationPath}/${nameSnakeFormat}.php`,
+      `${destinationPath}/${name}.php`,
       this.answers
     );
   }
