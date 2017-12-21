@@ -20,7 +20,7 @@ module.exports = class extends ElmsGenerator {
     return this.prompt(prompts).then(props => {
       props = Object.assign(props, {
         name: this.case().kebab(props.name),
-        nameSnakeFormat: this.case().kebab(props.name)
+        nameSnakeFormat: this.case().snake(props.name)
       });
       this.answers = props;
     });
@@ -57,6 +57,8 @@ module.exports = class extends ElmsGenerator {
     // install symlinks for bower components
     const name = this.answers.name;
     const destinationPath = this.destinationPath(`${this.APPS_PATH()}/${name}`);
-    const symlinks = fs.symlinkSync('../../elements', `${destinationPath}/bower_components`)
+    if (fs.existsSync(destinationPath)) {
+      const symlinks = fs.symlinkSync('../../elements', `${destinationPath}/bower_components`)
+    }
   }
 };
