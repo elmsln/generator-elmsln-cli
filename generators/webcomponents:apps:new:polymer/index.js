@@ -1,5 +1,6 @@
 'use strict';
 const ElmsGenerator = require('../ElmsGenerator');
+const fs = require('fs');
 
 module.exports = class extends ElmsGenerator {
   prompting() {
@@ -52,10 +53,10 @@ module.exports = class extends ElmsGenerator {
     );
   }
 
-  installing() {
+  end() {
+    // install symlinks for bower components
     const name = this.answers.name;
     const destinationPath = this.destinationPath(`${this.APPS_PATH()}/${name}`);
-    // Install bower dependencies in new app.
-    this.spawnCommandSync('bower', ['install'], { cwd: destinationPath });
+    const symlinks = fs.symlinkSync('../../elements', `${destinationPath}/bower_components`)
   }
 };
