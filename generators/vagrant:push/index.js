@@ -16,22 +16,27 @@ module.exports = class extends ElmsGenerator {
     }
   }
 
-  prompting() { }
+  prompting() {}
 
   installing() {
     const path = this.env.path;
-    // convert the path to an array so we can take off the last directory
+    // Convert the path to an array so we can take off the last directory
     let d = `:/home/vagrant/elmsln/${path}`;
-        d = d.split('/');
-        d.pop();
-        d = d.join('/');
+    d = d.split('/');
+    d.pop();
+    d = d.join('/');
     const destination = d;
     const source = path;
     this.log({
       source: source,
       destination: destination
     });
-    const command = this.spawnCommandSync('vagrant', ['scp', source, destination]);
+    const command = this.spawnCommandSync('rsync', [
+      '-r',
+      '--links',
+      source,
+      destination
+    ]);
     this.log(command);
   }
 };
