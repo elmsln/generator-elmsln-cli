@@ -8,7 +8,7 @@ module.exports = class extends ElmsGenerator {
         type: 'list',
         name: 'operation',
         message: 'What operation would you like to perform?',
-        choices: ['Apps', 'List Shared Elements', 'Clean Dependecies']
+        choices: ['Apps', 'Books', 'List Shared Elements', 'Clean Dependecies']
       }
     ]).then(answers => {
       this.answers = answers;
@@ -18,6 +18,9 @@ module.exports = class extends ElmsGenerator {
   writing() {
     if (this.answers.operation === 'Apps') {
       this.composeWith(require.resolve('../webcomponents:apps'));
+    }
+    if (this.answers.operation === 'Books') {
+      this.composeWith(require.resolve('../books'));
     }
     if (this.answers.operation === 'List Shared Elements') {
       this.composeWith(require.resolve('../webcomponents:elements'));
