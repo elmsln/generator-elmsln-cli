@@ -3,7 +3,6 @@
 'use strict';
 const ElmsGenerator = require('../ElmsGenerator');
 const drupal2jos = require('drupal-book-2-jos');
-const fs = require('fs-extra');
 const Path = require('path');
 
 module.exports = class extends ElmsGenerator {
@@ -65,7 +64,7 @@ module.exports = class extends ElmsGenerator {
   async installing() {
     const path = this.env.path;
     const output = this.env.output;
-    const xml = fs.readFileSync(Path.join(path));
+    const xml = this.fs.read(Path.join(path));
     // Get the jos from the xml file
     let jos = await drupal2jos(xml);
     // Format the jos to include a location if it doesn't already have one.
