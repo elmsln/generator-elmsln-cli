@@ -942,9 +942,9 @@ doctrine@^2.1.0:
   dependencies:
     esutils "^2.0.2"
 
-"drupal-book-2-jos@git+https://github.com/heyMP/drupal-book-2-jos.git":
-  version "0.0.3"
-  resolved "git+https://github.com/heyMP/drupal-book-2-jos.git#581a54fb175e1c44621dac8e673968f29490e448"
+"drupal-book-2-jos@git+https://github.com/heyMP/drupal-book-2-jos.git#^0.0.4":
+  version "0.0.4"
+  resolved "git+https://github.com/heyMP/drupal-book-2-jos.git#cba8fa690a90d9d32f7f2dc3fd9ee186d2ab1d01"
   dependencies:
     fs-extra "^6.0.1"
     lodash "^4.17.10"
