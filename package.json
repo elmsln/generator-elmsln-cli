@@ -35,7 +35,6 @@
     "case": "^1.5.4",
     "chalk": "^2.1.0",
     "drupal-book-2-jos": "git+https://github.com/heyMP/drupal-book-2-jos.git",
-    "prompt-confirm": "^2.0.4",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
